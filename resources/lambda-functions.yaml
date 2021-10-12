@@ -1,0 +1,34 @@
+apiVersion: lambda.services.k8s.aws/v1alpha1
+kind: Function
+metadata:
+  name: demo-function-put-item
+spec:
+  functionName: demo-function-put-item
+  code:
+    s3Bucket: ack-demo-bucket-kubecon2021
+    s3Key: put-item.zip
+  role: arn:aws:iam::771174509839:role/ack-demo-dynamodb-readwrite
+  runtime: python3.9
+  handler: put-item.lambda_handler
+  environment:
+    variables:
+      TABLE_NAME: demo-table
+  description: Function to put a single item to the demo table
+---
+apiVersion: lambda.services.k8s.aws/v1alpha1
+kind: Function
+metadata:
+  name: demo-function-list-items
+spec:
+  functionName: demo-function-list-items
+  code:
+    s3Bucket: ack-demo-bucket-kubecon2021
+    s3Key: list-items.zip
+  role: arn:aws:iam::771174509839:role/ack-demo-dynamodb-readonly
+  runtime: python3.9
+  handler: list-items.lambda_handler
+  environment:
+    variables:
+      TABLE_NAME: demo-table
+  description: Function to list items from a demo tables
+  

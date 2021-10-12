@@ -1,0 +1,18 @@
+apiVersion: dynamodb.services.k8s.aws/v1alpha1
+kind: Table
+metadata:
+  name: demo-table
+spec:
+  tableName: demo-table
+  attributeDefinitions:
+    - attributeName: id
+      attributeType: S
+  keySchema:
+    - attributeName: id
+      keyType: HASH
+  provisionedThroughput:
+    readCapacityUnits: 5
+    writeCapacityUnits: 5
+  streamSpecification:
+    streamEnabled: true
+    streamViewType: "NEW_AND_OLD_IMAGES"
