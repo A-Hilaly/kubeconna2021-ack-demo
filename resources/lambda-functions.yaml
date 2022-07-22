@@ -2,8 +2,10 @@ apiVersion: lambda.services.k8s.aws/v1alpha1
 kind: Function
 metadata:
   name: demo-function-put-item
+  annotations:
+    services.k8s.aws/region: us-west-2
 spec:
-  functionName: demo-function-put-item
+  name: demo-function-put-item
   code:
     s3Bucket: ack-demo-bucket-kubecon2021
     s3Key: put-item.zip
@@ -19,8 +21,10 @@ apiVersion: lambda.services.k8s.aws/v1alpha1
 kind: Function
 metadata:
   name: demo-function-list-items
+  annotations:
+    services.k8s.aws/region: us-west-2
 spec:
-  functionName: demo-function-list-items
+  name: demo-function-list-items
   code:
     s3Bucket: ack-demo-bucket-kubecon2021
     s3Key: list-items.zip

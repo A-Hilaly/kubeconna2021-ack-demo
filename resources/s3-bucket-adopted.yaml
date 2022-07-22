@@ -1,0 +1,13 @@
+apiVersion: services.k8s.aws/v1alpha1
+kind: AdoptedResource
+metadata:
+  name: adopt-my-existing-bucket
+spec:  
+  aws:
+    nameOrID: ack-demo-bucket-kubecon2021
+  kubernetes:
+    group: s3.services.k8s.aws
+    kind: Bucket
+    metadata:
+      name: ack-demo-bucket-kubecon2021
+      namespace: default
